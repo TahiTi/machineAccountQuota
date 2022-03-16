@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 
+# -*- coding: utf-8 -*-
+# File name          : machineAccountQuota.py
+# Author             : TahiTi
+# Date created       : 16 March 2022
+
+# Description:
+#   This module will try to get the Machine Account Quota from the domain attribute ms-DS-MachineAccountQuota.
+#   It is based on the impacket libraries.
+##
+
 import argparse
 import logging
 import sys
