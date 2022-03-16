@@ -89,10 +89,12 @@ class GetMachineAccountQuota:
             for item in result:
                 if isinstance(item, ldapasn1.SearchResultEntry) is not True:
                     continue
+                machineAccountQuota = 0
                 for attribute in item['attributes']:
                     if str(attribute['type']) == 'ms-DS-MachineAccountQuota':
-                        machineAccountQuota = str(attribute['vals'][0])
-            logging.info('MachineAccountQuota: %s' % machineAccountQuota)
+                        machineAccountQuota = attribute['vals'][0]
+            logging.info('MachineAccountQuota: %d' % machineAccountQuota)
+
         except ldap.LDAPSearchError:
             raise
 
