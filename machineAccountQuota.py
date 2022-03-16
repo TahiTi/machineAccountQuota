@@ -79,9 +79,6 @@ class GetMachineAccountQuota:
                 raise
 
         logging.info('Querying %s for information about domain.' % self.__target)
-        # Print header
-        print((self.__outputFormat.format(*self.__header)))
-        print(('  '.join(['-' * itemLen for itemLen in self.__colLen])))
 
         # Building the search filter
         searchFilter = "(&objectClass=*)"
