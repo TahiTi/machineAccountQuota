@@ -22,8 +22,6 @@ class GetMachineAccountQuota:
         self.__doKerberos = cmdLineOptions.k
         self.__target = None
         self.__kdcHost = cmdLineOptions.dc_ip
-        self.__requestUser = cmdLineOptions.user
-        self.__all = cmdLineOptions.all
         if cmdLineOptions.hashes is not None:
             self.__lmhash, self.__nthash = cmdLineOptions.hashes.split(':')
 
