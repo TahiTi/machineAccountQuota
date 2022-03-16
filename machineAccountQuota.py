@@ -107,6 +107,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(add_help=True, description='Retrieve the machine account quota value from the domain.')
 
     parser.add_argument('target', action='store', help='[[domain/]username[:password]@]<targetName or address>')
+    parser.add_argument('-ts', action='store_true', help='Adds timestamp to every logging output')
+    parser.add_argument('-debug', action='store_true', help='Turn DEBUG output ON')
 
     group = parser.add_argument_group('authentication')
 
