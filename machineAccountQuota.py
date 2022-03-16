@@ -153,7 +153,7 @@ if __name__ == '__main__':
         password = getpass('Password:')
 
     try:
-        execute = GetMAQ(username, password, domain, options)
+        execute = GetMachineAccountQuota(username, password, domain, options)
         execute.run()
     except Exception as e:
         if logging.getLogger().level == logging.DEBUG:
