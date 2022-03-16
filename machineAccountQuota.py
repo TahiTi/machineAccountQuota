@@ -106,7 +106,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(add_help=True, description='Retrieve the machine account quota value from the domain.')
 
-    parser.add_argument('target', action='store', help='[[domain/]username[:password]@]<targetName or address>')
+    parser.add_argument('target', action='store', help='[[domain/]username[:password]')
     parser.add_argument('-ts', action='store_true', help='Adds timestamp to every logging output')
     parser.add_argument('-debug', action='store_true', help='Turn DEBUG output ON')
 
@@ -143,9 +143,6 @@ if __name__ == '__main__':
 
     if domain is None:
         domain = ''
-
-    if options.target_ip is None:
-        options.target_ip = remoteName
 
     if options.aesKey is not None:
         options.k = True
