@@ -81,16 +81,18 @@ class GetMachineAccountQuota:
         logging.info('Querying %s for information about domain.' % self.__target)
 
         # Building the search filter
-        searchFilter = "(&objectClass=*)"
+        searchFilter = "(objectClass=*)"
+        attributes = ['ms-DS-MachineAccountQuota']
 
         try:
-            logging.debug('Search Filter=%s' % searchFilter)
-            result = ldapConnection.search(searchFilter=searchFilter,
-                                  attributes=['ms-DS-MachineAccountQuota'])
+            result = ldapConnection.search(searchFilter=searchFilter, attributes=attributes)
             for item in result:
-                if isinstance(item, ldapasn1.SearchResulEntry) is not True:
+                if isinstance(item, ldapasn1.SearchResultEntry) is not True:
                     continue
-                logging.info('MachineAccountQuota: %d' % item['attributes'][0]['vals'][0])
+                for attribute in item['attributes']:
+                    if str(attribute['type']) == 'ms-DS-MachineAccountQuota':
+                        machineAccountQuota = str(attribute['vals'][0])
+            logging.info('MachineAccountQuota: %s' % machineAccountQuota)
         except ldap.LDAPSearchError:
             raise
 
