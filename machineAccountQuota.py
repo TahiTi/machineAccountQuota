@@ -93,7 +93,7 @@ class GetMachineAccountQuota:
                 for attribute in item['attributes']:
                     if str(attribute['type']) == 'ms-DS-MachineAccountQuota':
                         machineAccountQuota = attribute['vals'][0]
-            logging.info('MachineAccountQuota: %d' % machineAccountQuota)
+                    logging.info('MachineAccountQuota: %d' % machineAccountQuota)
 
         except ldap.LDAPSearchError:
             raise
